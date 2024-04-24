@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flask app</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    {% for d in data%}
+        {{ d }}<br/>
+    {% endfor %}
+    <br/><a href="{{ url_for('homepage')}}">Go to index</a>
+</body>
+</html>

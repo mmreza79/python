@@ -1,2 +1,2 @@
-# python
-play with python code
+# Python
+Python playground.
