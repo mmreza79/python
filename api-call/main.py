@@ -13,7 +13,7 @@ def authenticate(credentials: dict):
         print(f'authentication failed: {response.get('error')}')
         return
     
-    token = response.json().get('token', '')
+    token = parse_from_response(response, 'token')
     if token == '':
         print(f'token is empty. check response: {response}')
         return
@@ -26,7 +26,7 @@ def upload_file(token: str, file_path: str):
         if response.get('error'):
             print(f'failed to upload a file: {response.get('errir')}')
             return
-        doc_id = response.json().get('doc_id')
+        doc_id = parse_from_response(response, 'doc_id')
         if doc_id == '':
             print(f'doc_id is empty. check response: {response}')
             return
@@ -67,3 +67,6 @@ if __name__ == "__main__":
         doc_ids = upload_files(token, file_paths)
         print(f'uploaded document IDs {doc_ids}')
 
+
+def parse_from_response(response, name):
+    return response.json().get(name, '')
